@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <malloc.h>
 
 /************************************************
@@ -11,15 +12,15 @@
 // Node Definition for a Single Linked List
 struct SingleLinkedListNode{
 	int data;
-	SingleLinkedListNode *next;
+	struct SingleLinkedListNode *next;
 };
 // Definition of data type
-typedef SingleLinkedListNode SLLN;
+typedef struct SingleLinkedListNode SLLN;
 
 // Function Definition
 // Node Creation Functions
 SLLN* createNode(int data);
-SLLN* createNodeAtEnd(SLLN *head, int data);
+void createNodeAtEnd(SLLN *head, int data);
 SLLN* createInteractiveSingleList(void);
 // Utilities Function
 void printList(SLLN* n);
@@ -41,10 +42,11 @@ void printList(SLLN* n){
 		printf("%i\t",n->data);
 		n=n->next;
 	}
+	printf("\n");
 }
 
 // Add a new Node to a Single Linked List 
-SLLN* createNodeAtEnd(SLLN *head, int data){
+void createNodeAtEnd(SLLN *head, int data){
 	SLLN *n = head;
 	SLLN *newNode = createNode(data);
 	if(n){
@@ -55,33 +57,31 @@ SLLN* createNodeAtEnd(SLLN *head, int data){
 	}else{
 		head = newNode;
 	}
-	return head;
+	return;
 }
 
 //Create a new Memory space for a new Node Based on a Single Linked List
 SLLN* createNode(int data){
-	SLLN *n=(SLLN*) malloc (sizeof(SLLN*));
+	SLLN *n=(SLLN*) malloc (sizeof(SLLN));
 	n->data=data;
 	n->next=NULL;
+	return n;
 }
 
 // Create a SingleLinkedList in a interactive mode
 SLLN* createInteractiveSingleList(){
 	int n;
 	SLLN *head=NULL,*newNode=NULL, *prev=NULL;
-	printf("Type the data for the new Node: ");
-	scanf("%i",&n);
 	do{
-		prev=newNode;
+		printf("Type the data for the new Node (0) to exit: ");
+		scanf("%i",&n);
 		newNode=createNode(n);
+		prev=newNode;
 		if(head==NULL){
 			head=newNode;
 		}else{
-			prev->next=newNode;
-		}
-		printf("Type the data for next Node (0 to exit: ");
-		scanf("%i",&n);
-		
+			newNode->next=prev;
+		}		
 	}while(n!=0);
 	return head;
 }

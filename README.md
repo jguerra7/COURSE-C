@@ -14,6 +14,25 @@
 
 ### Slides
 
+#### Procedural Programming Course Summary
+
+0. Introduccion - General Subject Information
+1. Basic Concepts
+2. Conditions
+3. Loops
+4. Functions
+5. Arrays
+6. Structs
+7. Additional Stuff
+8. Pointers
+9. Recursion
+10. Single Linked List
+11. Double Linked List
+12. Piles and Queues
+13. Files
+
 #### Data Structures Course Summary
 
 0. Introduccion - General Subject Information
+1. Binary Trees
+

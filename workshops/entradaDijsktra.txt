@@ -1,0 +1,10 @@
+a2b
+b3c
+b2e
+b1d
+g2d
+e4f
+d4e
+a-e
+c-f
+g-c
